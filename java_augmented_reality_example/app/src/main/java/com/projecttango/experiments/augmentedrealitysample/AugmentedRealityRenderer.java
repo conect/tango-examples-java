@@ -19,6 +19,7 @@ import com.google.atap.tangoservice.TangoPoseData;
 
 import android.content.Context;
 
+import android.util.Log;
 import android.view.MotionEvent;
 
 import org.rajawali3d.Object3D;
@@ -29,6 +30,9 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.util.IObjectPicker;
+import org.rajawali3d.util.ObjectColorPicker;
+import org.rajawali3d.util.OnObjectPickedListener;
 
 import com.projecttango.rajawali.DeviceExtrinsics;
 import com.projecttango.rajawali.Pose;
@@ -50,12 +54,14 @@ import com.projecttango.rajawali.ar.TangoRajawaliRenderer;
  * the displayed RGB camera texture and produce the AR effect through a Scene Frame Callback
  * (@see AugmentedRealityActivity)
  */
-public class AugmentedRealityRenderer extends TangoRajawaliRenderer {
+public class AugmentedRealityRenderer extends TangoRajawaliRenderer implements OnObjectPickedListener {
     private static final float CUBE_SIDE_LENGTH = 0.5f;
 
     private Object3D mObject;
     private Pose mObjectPose;
     private boolean mObjectPoseUpdated = false;
+    private ObjectColorPicker mPicker;
+
 
     public AugmentedRealityRenderer(Context context) {
         super(context);
@@ -66,6 +72,7 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer {
         // Remember to call super.initScene() to allow TangoRajawaliArRenderer
         // to be set-up.
         super.initScene();
+        mPicker = new ObjectColorPicker(this);
 
         // Add a directional light in an arbitrary direction.
         DirectionalLight light = new DirectionalLight(1, 0.2, -1);
@@ -78,15 +85,15 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer {
         // instructions.
         Material material = new Material();
         material.setColor(0xff009900);
-        try {
-            Texture t = new Texture("instructions", R.drawable.instructions);
-            material.addTexture(t);
-        } catch (ATexture.TextureException e) {
-            e.printStackTrace();
-        }
-        material.setColorInfluence(0.1f);
-        material.enableLighting(true);
-        material.setDiffuseMethod(new DiffuseMethod.Lambert());
+//        try {
+//            Texture t = new Texture("instructions", R.drawable.instructions);
+//            material.addTexture(t);
+//        } catch (ATexture.TextureException e) {
+//            e.printStackTrace();
+//        }
+//        material.setColorInfluence(0.1f);
+//        material.enableLighting(true);
+//        material.setDiffuseMethod(new DiffuseMethod.Lambert());
 
         // Build a Cube and place it initially in the origin.
         mObject = new Cube(CUBE_SIDE_LENGTH);
@@ -94,6 +101,7 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer {
         mObject.setPosition(0, 0, -3);
         mObject.setRotation(Vector3.Axis.Z, 180);
         getCurrentScene().addChild(mObject);
+        mPicker.registerObject(mObject);
     }
 
     @Override
@@ -146,5 +154,19 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer {
     @Override
     public void onTouchEvent(MotionEvent event) {
 
+    }
+    @Override
+    public void onObjectPicked(Object3D object) {
+        Log.d("picking:",object.getName());
+    }
+
+    @Override
+    public void onNoObjectPicked() {
+        Log.d("picking:","failed");
+
+    }
+
+    public ObjectColorPicker getPicker() {
+        return mPicker;
     }
 }

@@ -30,7 +30,7 @@ import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.StreamingTexture;
 import org.rajawali3d.math.Matrix4;
 import org.rajawali3d.primitives.ScreenQuad;
-import org.rajawali3d.renderer.RajawaliRenderer;
+import org.rajawali3d.renderer.Renderer;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -54,7 +54,7 @@ import com.projecttango.rajawali.ScenePoseCalculator;
  * - In most cases the Rajawali camera will not be handled by the user since it is automatically
  * handled by this mRenderer.
  */
-public abstract class TangoRajawaliRenderer extends RajawaliRenderer {
+public abstract class TangoRajawaliRenderer extends Renderer {
     private static final String TAG = TangoRajawaliRenderer.class.getSimpleName();
 
     // Rajawali scene objects to render the color camera

@@ -21,14 +21,14 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
-import org.rajawali3d.surface.RajawaliSurfaceView;
+import org.rajawali3d.*;
 
 /**
  * This is a specialized <code>RajawaliSurfaceView</code> that allows rendering of a Rajawali scene
  * together with the Tango Camera Preview and optionally using the Tango Pose Estimation to drive
  * the Rajawali Camera and build Augmented Reality applications.
  */
-public class TangoRajawaliView extends RajawaliSurfaceView {
+public class TangoRajawaliView extends org.rajawali3d.view.SurfaceView {
     private static final String TAG = "TangoRajawaliView";
     TangoRajawaliRenderer mRenderer;
 
