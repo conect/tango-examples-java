@@ -73,6 +73,7 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer implements O
         // to be set-up.
         super.initScene();
         mPicker = new ObjectColorPicker(this);
+        mPicker.setOnObjectPickedListener(this);
 
         // Add a directional light in an arbitrary direction.
         DirectionalLight light = new DirectionalLight(1, 0.2, -1);

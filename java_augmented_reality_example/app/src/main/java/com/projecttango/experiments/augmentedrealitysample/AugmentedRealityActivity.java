@@ -260,7 +260,7 @@ public class AugmentedRealityActivity extends Activity implements View.OnTouchLi
     public boolean onTouch(View view, MotionEvent event) {
 
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            Log.d("getting object",event.toString());
+            Log.d("getting object",Float.toString(event.getX())+","+Float.toString(event.getY()));
 
             // Calculate click location in u,v (0;1) coordinates.
             mRenderer.getPicker().getObjectAt(event.getX(),event.getY());
