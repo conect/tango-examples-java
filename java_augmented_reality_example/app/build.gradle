@@ -39,7 +39,7 @@ repositories {
 }
 
 dependencies {
-    //compile 'org.rajawali3d:rajawali:1.1.501-SNAPSHOT@aar'
+    compile 'org.rajawali3d:rajawali:1.1.501-SNAPSHOT@aar'
     compile (name: 'tango_support_java_lib', ext: 'aar')
     compile project(':java_examples_utils')
 }
