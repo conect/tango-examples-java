@@ -60,7 +60,7 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer implements O
     private Object3D mObject;
     private Pose mObjectPose;
     private boolean mObjectPoseUpdated = false;
-    private ObjectColorPicker mPicker;
+    private ObjectColorPicker myPicker;
 
 
     public AugmentedRealityRenderer(Context context) {
@@ -72,8 +72,8 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer implements O
         // Remember to call super.initScene() to allow TangoRajawaliArRenderer
         // to be set-up.
         super.initScene();
-        mPicker = new ObjectColorPicker(this);
-        mPicker.setOnObjectPickedListener(this);
+        myPicker = new ObjectColorPicker(this);
+        myPicker.setOnObjectPickedListener(this);
 
         // Add a directional light in an arbitrary direction.
         DirectionalLight light = new DirectionalLight(1, 0.2, -1);
@@ -102,7 +102,7 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer implements O
         mObject.setPosition(0, 0, -3);
         mObject.setRotation(Vector3.Axis.Z, 180);
         getCurrentScene().addChild(mObject);
-        mPicker.registerObject(mObject);
+        myPicker.registerObject(mObject);
     }
 
     @Override
@@ -167,7 +167,7 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer implements O
 
     }
 
-    public ObjectColorPicker getPicker() {
-        return mPicker;
+    public ObjectColorPicker getmyPicker() {
+        return myPicker;
     }
 }

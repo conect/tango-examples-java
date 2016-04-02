@@ -263,7 +263,7 @@ public class AugmentedRealityActivity extends Activity implements View.OnTouchLi
             Log.d("getting object",Float.toString(event.getX())+","+Float.toString(event.getY()));
 
             // Calculate click location in u,v (0;1) coordinates.
-            mRenderer.getPicker().getObjectAt(event.getX(),event.getY());
+            mRenderer.getmyPicker().getObjectAt(event.getX(),event.getY());
 
         }
         return true;
