@@ -81,6 +81,8 @@ public abstract class TangoRajawaliRenderer extends Renderer {
     protected void initScene() {
         mBackgroundQuad = new ScreenQuad();
 
+        //mBackgroundQuad.setVisible(false); -> object picking works
+
         mTangoCameraTexture =
                 new StreamingTexture("camera", (StreamingTexture.ISurfaceListener) null);
 

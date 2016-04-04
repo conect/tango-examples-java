@@ -158,7 +158,7 @@ public class AugmentedRealityRenderer extends TangoRajawaliRenderer implements O
     }
     @Override
     public void onObjectPicked(Object3D object) {
-        Log.d("picking:",object.getName());
+        Log.d("picking:",object.getClass().getSimpleName());
     }
 
     @Override
